@@ -1,0 +1,41 @@
+
+2.
+
+
+--CREATE TABLE emp(
+--    empname varchar(50),
+--    empno int,
+--    empjob varchar(50),
+--    empsal int DEFAULT(NULL),
+--    deptno int
+--);
+--
+--
+--INSERT INTO emp VALUES('Alan', 201, 'Clerk', 1000, 201);
+--INSERT INTO emp VALUES('Catherina', 202, 'Clerk', 2100, 201);
+--INSERT INTO emp VALUES('Abraham', 101, 'Consultant', 10000, 21);
+--INSERT INTO emp VALUES('Sally', 102, 'Consultant', 10500, 21);
+--INSERT INTO emp VALUES('Fred', 103, 'Engineer', 12000, 2);
+--INSERT INTO emp VALUES('Paul', 104, 'Salesperson', 2500, 20);
+--INSERT INTO emp VALUES('Eric', 105, 'HR', 11000, 5);
+--INSERT INTO emp VALUES('Marthay', 106, 'Engineer', 11000, 2);
+--INSERT INTO emp VALUES('Rick', 107, 'Senior Engineer', 24000, 10);
+--INSERT INTO emp VALUES('Richard', 108, 'Project Manager', 30000, 1);
+--INSERT INTO emp (empname,empno, empjob,deptno) VALUES('Xavier', 301, 'Assistant Project Manager', 1);
+
+
+SELECT empno, empname FROM emp WHERE deptno = 10;
+SELECT empname FROM emp WHERE empsal > 2000 AND empjob = 'Clerk';
+SELECT empname, empsal FROM emp WHERE empjob = 'Clerk' OR empjob = 'Salesperson';
+SELECT * FROM emp WHERE deptno = 10 OR deptno = 20 OR deptno = 30;
+SELECT * FROM emp WHERE empsal IS NULL;
+SELECT deptno, empsal FROM emp ORDER BY deptno ASC, empsal DESC;  
+SELECT empname FROM emp WHERE empname LIKE 'C%';
+SELECT empname FROM emp WHERE empname LIKE '%c';
+SELECT empname FROM emp WHERE empname LIKE '%a%a%';
+SELECT empname FROM emp WHERE empname LIKE '_b%';
+SELECT empname FROM emp WHERE empname LIKE '%a';
+--
+--DROP TABLE emp;
+--
+--
