@@ -1,0 +1,51 @@
+1 create table student rno dob gender class cvollege city marks
+2 insert 5 records in student table
+3 display the information of all the students
+4 Display the detail structure of student table
+5 display rno name class inf of pat student
+6 disp inf on asc ord of marks
+7 change marks of rno 5 to 9
+8 change the name and city of rno 9
+9 del the inf of amritsar city records
+10 del rec od student where marks<30
+
+1.
+
+
+--CREATE TABLE student(
+--    name_stud varchar(20),
+--    roll_no int,
+--    dob varchar(10),
+--    gender varchar(5),
+--    class_stud int,
+--    college varchar(20),
+--    city varchar(20),
+--    marks int
+--);
+--
+--INSERT INTO student VALUES('John', 1, '12/2/2000', 'M', 10, 'Thapar', 'Amritsar', '50');
+--INSERT INTO student VALUES('Peter', 2, '11/7/2000', 'M', 10, 'Thapar', 'Kolkata', '5');
+--INSERT INTO student VALUES('Sally', 9, '12/8/2000', 'F', 10, 'Thapar', 'Patiala', '10');
+--INSERT INTO student VALUES('Sasha', 4, '12/9/2000', 'F', 10, 'Thapar', 'Delhi', '80');
+--INSERT INTO student VALUES('Richard', 5, '12/1/2000', 'M', 10, 'Thapar', 'Amritsar', '90');
+
+SELECT * FROM student;
+DESC student;
+
+SELECT roll_no, name_stud, class_stud FROM student WHERE city = 'Patiala';
+
+SELECT * FROM student ORDER BY marks;
+
+UPDATE student SET marks = 9 WHERE roll_no = 5;
+SELECT * FROM student;
+
+UPDATE student SET name_stud = 'Tasha', city = 'Banglore' WHERE roll_no = 9;
+SELECT * FROM student;
+
+DELETE FROM student WHERE city = 'Amritsar';
+SELECT * FROM student;
+
+DELETE FROM student WHERE marks<30;
+SELECT * FROM student;
+
+--DROP TABLE student;
