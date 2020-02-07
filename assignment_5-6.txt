@@ -1,0 +1,109 @@
+--CREATE TABLE dept(
+--    deptno int PRIMARY KEY,
+--    dname varchar(20) check (dname in ('Acc','comp','elect'))
+--);
+--
+CREATE TABLE emp(
+    empno int PRIMARY KEY,
+    ename varchar(30) CONSTRAINT ABC UNIQUE,
+    job varchar(30) check(job in ('Prof','AP','Lect')),
+    sal int NOT NULL,
+    deptno int,
+    CONSTRAINT XYZ FOREIGN KEY (deptno) REFERENCES dept(deptno)
+);
+--
+--CREATE TABLE S(
+--    sno int PRIMARY KEY,
+--    sname varchar(30),
+--    city varchar(20)
+--);
+--
+--CREATE TABLE P(
+--    pno int PRIMARY KEY,
+--    pname varchar(30),
+--    color varchar(20)
+--);
+--
+--CREATE TABLE J(
+--    jno int PRIMARY KEY,
+--    jname varchar(30),
+--    city varchar(20)
+--);
+
+
+--CREATE TABLE SPJ(
+--    sno int,
+--    pno int,
+--    jno int,
+--    qty int,
+--    PRIMARY KEY(sno, pno, jno),
+--    FOREIGN KEY (sno) REFERENCES S(sno),
+--    FOREIGN KEY (pno) REFERENCES P(pno),
+--    FOREIGN KEY (jno) REFERENCES J(jno)
+--);
+
+INSERT INTO emp VALUES(1, 'Alice', 'AP', 20000, 1);
+INSERT INTO emp VALUES(2, 'Bob', 'Lect', 15000, 1);
+INSERT INTO emp VALUES(3, 'Catherine', 'Prof', 30000, 3);
+INSERT INTO emp VALUES(4, 'Dave', 'Prof', 30000, 3);
+INSERT INTO emp VALUES(5,'Ellie', 'AP',22000, 2);
+
+--INSERT INTO emp VALUES(6,'Ellie', 'AP',22000, 2);
+--
+--INSERT INTO dept VALUES(1,'Acc');
+--INSERT INTO dept VALUES(2,'comp');
+--INSERT INTO dept VALUES(3,'elect');
+
+--INSERT INTO S VALUES(1,'Zelda','Neverland');
+--INSERT INTO S VALUES(2,'Yakult','Yakultland');
+--INSERT INTO S VALUES(3,'Xanr','Xanland');
+
+--INSERT INTO P VALUES(1,'Desk','Black');
+--INSERT INTO P VALUES(2,'Table','Pink');
+--INSERT INTO P VALUES(3,'Board','White');
+
+--INSERT INTO J VALUES(1,'Blockchain','Neverland');
+--INSERT INTO J VALUES(2,'Network','Yakultland');
+--INSERT INTO J VALUES(3,'ML','Xanland');
+
+--INSERT INTO SPJ VALUES(1,1,1,111);
+--INSERT INTO SPJ VALUES(1,1,2,112);
+--INSERT INTO SPJ VALUES(1,1,3,113);
+--INSERT INTO SPJ VALUES(1,2,1,121);
+--INSERT INTO SPJ VALUES(1,3,1,131);
+
+select * from emp;
+select * from dept;
+select * from S;
+select * from P;
+select * from J;
+select * from SPJ;
+
+describe emp;
+describe dept;
+describe S;
+describe P;
+describe J;
+describe SPJ;
+
+ALTER TABLE emp DROP CONSTRAINT ABC;
+ALTER TABLE emp DROP CONSTRAINT XYZ;
+ALTER TABLE emp ADD CONSTRAINT XYZ FOREIGN KEY (deptno) REFERENCES dept(deptno);
+
+ALTER TABLE emp MODIFY ename char(20);
+ALTER TABLE dept MODIFY dname varchar(10);
+ALTER TABLE emp ADD COMM varchar(10);
+ALTER TABLE J DROP column city;
+
+CREATE TABLE emp_cpy AS SELECT * FROM emp;
+select * from emp_cpy;
+
+CREATE TABLE dept_cpy(name_cpy, type_cpy) AS SELECT * FROM dept;
+select * from dept_cpy;
+
+UPDATE emp SET ename = 'changed_name', job = 'Prof' WHERE empno = 1; 
+DELETE from emp WHERE(dept.dname='comp');
+
+
+drop table emp;
+--drop table dept;
